@@ -39,4 +39,48 @@ class GPATest {
         GPA calc = new GPA();
         assertEquals(0.0, calc.convertGrade("F"));
     }
+
+    @Test
+    @DisplayName("Fail on converting E to value")
+    void testGradeConversion7() {
+        GPA calc = new GPA();
+        assertThrows(IllegalArgumentException.class, () -> calc.convertGrade("E"));
+    }
+
+    @Test
+    @DisplayName("GPA Standing 1.0 to Needs Help")
+    void gpaStanding1() {
+        assertEquals("Needs Help", GPA.checkStanding(1.0));
+    }
+
+    @Test
+    @DisplayName("GPA Standing 1.2 to Needs Help")
+    void gpaStanding2() {
+        assertEquals("Needs Help", GPA.checkStanding(1.2));
+    }
+
+    @Test
+    @DisplayName("GPA Standing 1.5 to Needs Help")
+    void gpaStanding3() {
+        assertEquals("Needs Help", GPA.checkStanding(1.5));
+    }
+
+    @Test
+    @DisplayName("GPA Standing 2.1 to Good Standing")
+    void gpaStanding4() {
+        assertEquals("Good Standing", GPA.checkStanding(2.1));
+    }
+
+    @Test
+    @DisplayName("GPA Standing 3.0 to Very Good Standing")
+    void gpaStanding5() {
+        assertEquals("Very Good Standing", GPA.checkStanding(3.0));
+    }
+
+    @Test
+    @DisplayName("GPA Standing 3.5 to Very Good Standing")
+    void gpaStanding6() {
+        assertEquals("Very Good Standing", GPA.checkStanding(3.5));
+    }
+
 }
